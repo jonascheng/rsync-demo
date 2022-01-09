@@ -28,7 +28,7 @@ do
     # -v, --verbose increase verbosity
     # -z, --compress compress file data during the transfer
     echo "$(date "+%H:%M:%S.%3N") CMD /usr/bin/rsync -vzrtopg –delete ${SYNC_PATH} ${dst_server}:${DST_PATH}" >> '/var/log/rsync.log' 2>&1
-    /usr/bin/rsync -vzrtopg –delete ${SYNC_PATH} ${dst_server}:${DST_PATH}
+    /usr/bin/rsync -vzrtopg --delete --progress ${SYNC_PATH} ${dst_server}:${DST_PATH}
     echo "$(date "+%H:%M:%S.%3N") SYNCED ${dst_server}, ${FILE}" >> '/var/log/rsync.log' 2>&1
   fi
 done
