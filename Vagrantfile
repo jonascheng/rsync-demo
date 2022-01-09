@@ -71,9 +71,9 @@ Vagrant.configure("2") do |config|
     node.vm.network "private_network", ip: "10.1.0.20", hostname: true
   end
 
-#  config.vm.define "server3" do |node|
-#    node.vm.hostname = "server3"
-#    node.vm.network "private_network", ip: "10.1.0.30", hostname: true
-#  end
+ config.vm.define "server3" do |node|
+   node.vm.hostname = "server3"
+   node.vm.network "private_network", ip: "10.1.0.30", hostname: true
+ end
 
 end

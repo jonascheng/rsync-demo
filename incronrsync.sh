@@ -16,7 +16,7 @@ DST_PATH=/home/vagrant
 
 echo "$(date "+%H:%M:%S.%3N") OnInotifyReceived $1, $2, $3" >> '/var/log/rsync.log' 2>&1
 
-for dst_server in 10.1.0.10 10.1.0.20
+for dst_server in 10.1.0.10 10.1.0.20 10.1.0.30
 do
   if [ ${dst_server} != ${HOSTIP} ]; then
     # Rsync Options Summary
