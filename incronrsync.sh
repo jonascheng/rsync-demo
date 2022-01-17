@@ -34,8 +34,8 @@ do
     # -t, --times preserve modification times
     # -v, --verbose increase verbosity
     # -z, --compress compress file data during the transfer
-    echo "$(date "+%H:%M:%S.%3N") CMD /usr/bin/rsync -vzrtopg --delete --exclude '.*' --password-file=/etc/secret --progress ${SYNC_PATH}/ root@${dst_server}::Rsync" >> '/var/log/rsync.log' 2>&1
-    /usr/bin/rsync -vzrtopg --delete --exclude '.*' --password-file=/etc/secret --progress ${SYNC_PATH}/ root@${dst_server}::Rsync
+    echo "$(date "+%H:%M:%S.%3N") CMD /usr/bin/rsync -vzrtopgu --modify-window=5 --delete --exclude '.*' --password-file=/etc/secret --progress ${SYNC_PATH}/ root@${dst_server}::Rsync" >> '/var/log/rsync.log' 2>&1
+    /usr/bin/rsync -vzrtopgu --modify-window=5 --delete --exclude '.*' --password-file=/etc/secret --progress ${SYNC_PATH}/ root@${dst_server}::Rsync
     echo "$(date "+%H:%M:%S.%3N") SYNCED ${dst_server}, ${FILE}" >> '/var/log/rsync.log' 2>&1
   fi
 done

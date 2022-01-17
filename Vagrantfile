@@ -4,6 +4,12 @@ apt-get install -y inotify-tools incron
 #end script
 SCRIPT
 
+$incron_service = <<SCRIPT
+cp /vagrant/incron.service /lib/systemd/system/incron.service
+systemctl daemon-reload
+#end script
+SCRIPT
+
 $rsync_daemon = <<SCRIPT
 cp /vagrant/rsyncd.* /etc
 chmod 600 /etc/rsyncd.secrets
@@ -26,6 +32,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "boxomatic/debian-10"
   config.vm.box_version = "20210723.0.1"
   config.vm.provision "shell", privileged: true, inline: $package
+  config.vm.provision "shell", privileged: true, inline: $incron_service
   config.vm.provision "shell", privileged: true, inline: $rsync_daemon
   config.vm.provision "shell", privileged: true, inline: $rsync_monitor
 
